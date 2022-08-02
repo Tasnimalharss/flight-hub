@@ -41,13 +41,29 @@
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label for="flight" class="mb-1">Flight </label>
-                            <select type="text"  wire:model="flight_id" class="form-control @error('flight_id') is-invalid @enderror">
+                            <select type="text"  wire:change="setClassType()" wire:model="flight_id" class="form-control @error('flight_id') is-invalid @enderror">
                                 <option value="">Choose Flight</option>
                                 @foreach ($flights as $flight)
                                     <option value="{{ $flight->id }}">{{ $flight->name }}</option>
                                 @endforeach
                             </select>
                             @error('flight_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="mb-1">Class type</label>
+                            <select type="text" wire:model="class_type_id" class="form-control @error('class_type_id') is-invalid @enderror"">
+                                <option value="">Choose Class Type</option>
+                                @foreach ($class_types as $class_type)
+                                    <option value="{{ $class_type->id }}">{{ $class_type->name .' '. $class_type->ticket_type }}</option>
+                                @endforeach
+                            </select>
+                            @error('class_type_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -70,7 +86,8 @@
                         @enderror
                         </div>
                     </div>
-                    <div class="row mt-3">
+                   
+                    {{-- <div class="row mt-3">
                         <h5 class="py-1">Class Types and prices</h5>
                         <div class="col-md-12">
                             <table class="table">
@@ -139,7 +156,7 @@
                             </table>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row text-end">
                         <div class="col-md-12 mt-2">

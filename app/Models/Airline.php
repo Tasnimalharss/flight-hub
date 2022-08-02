@@ -3,9 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Airline extends Model
+class Airline extends Model implements  HasMedia
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes ,HasMediaTrait;
+    protected $with =['media'];
+    protected $appends = ["image"];
+
+    public function getImageAttribute(){
+        if ($this->hasMedia()) {
+            return $this->getFirstMedia()->getFullUrl();
+        }
+        return null;
+    }
+
+    public function class_types(){
+        return $this->hasMany(ClassType::class);
+    }
+
+    public function flights(){
+        return $this->hasMany(Flight::class);
+    }
 }

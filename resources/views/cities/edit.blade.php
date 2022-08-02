@@ -10,7 +10,15 @@
         <form method="POST" action="{{route('cities.update',$city->id)}}">
             @csrf
             @method('PUT')
-            <div class="row">
+             <div class="row">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" value="{{$city->code}}" name="code" placeholder="City code">
+                    @error('code')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mt-3">
                 <div class="col-md-12">
                     <input type="text" value="{{$city->name}}" class="form-control" name="name" placeholder="City name">
                     @error('name')
@@ -18,6 +26,7 @@
                     @enderror
                 </div>
             </div>
+           
             <div class="row mt-3">
                 <div class="col-md-12">
                     <select class="form-control" name="country_id" id="country_id">

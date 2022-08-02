@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Ticket extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+
 
     protected $guarded=[];
 
@@ -16,12 +19,13 @@ class Ticket extends Model
         return $this->belongsTo(Flight::class);
     }
 
-    public function user(){
+    public function passenger(){
         
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Passenger::class);
     }
 
-    public function class_types(){
-        return $this->hasMany(ClassType::class);
-    }
+    public function class_type(){
+        
+        return $this->belongsTo(ClassType::class);
+    }   
 }

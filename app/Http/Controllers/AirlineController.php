@@ -37,13 +37,18 @@ class AirlineController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'code' => 'required|unique:airlines',
+            'photo' => 'required|image',
         ]);
 
         $airline = new Airline;
         $airline->name = $request->name;
+        $airline->code = $request->code;
         $airline->save();
+        $airline->addMedia($request->photo)->toMediaCollection();
 
-        return redirect()->route('airlines.index')->with(['success' => 'Airline data has been added successfully!']);;
+
+        return redirect()->route('airlines.index')->with(['success' => 'Airline data has been added successfully!']);
     }
 
     /**
@@ -63,10 +68,10 @@ class AirlineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Airline $airline)
     {
          return view('airlines.edit',
-          [ 'airline' =>Airline::find($id)
+          [ 'airline' =>$airline->load('class_types')->toArray()
         ]);
 
     }
@@ -83,9 +88,12 @@ class AirlineController extends Controller
        
         $this->validate($request, [
             'name' => 'required',
+            'code' => 'required|unique:airlines,code,'.$id,
+
         ]);
 
         $airline = Airline::find($id);
+        $airline->code = $request->code;
         $airline->name = $request->name;
         $airline->save();
 

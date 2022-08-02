@@ -1,4 +1,4 @@
-<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
+<aside class="bg-primary navbar navbar-vertical navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
             <span class="navbar-toggler-icon"></span>
@@ -211,8 +211,8 @@
         </div> --}}
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="./index.html">
+                <li class="nav-item {{ (request()->segment(1) == 'home') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('home')}}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -229,7 +229,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->segment(1) == 'tickets') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('tickets.index')}}">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ticket"
@@ -249,7 +249,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->segment(1) == 'flights') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('flights.index')}}">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -263,8 +263,8 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('flights.index')}}">
+                <li class="nav-item {{ (request()->segment(1) == 'passengers') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('passengers.index')}}">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -279,7 +279,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->segment(1) == 'airports') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('airports.index')}}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -293,19 +293,14 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->segment(1) == 'airlines') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('airlines.index')}}">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ticket"
-                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-exchange" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <line x1="15" y1="5" x2="15" y2="7"></line>
-                            <line x1="15" y1="11" x2="15" y2="13"></line>
-                            <line x1="15" y1="17" x2="15" y2="19"></line>
-                            <path
-                                d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2">
-                            </path>
+                            <path d="M7 10h14l-4 -4"></path>
+                            <path d="M17 14h-14l4 4"></path>
+                         </svg>
                         </svg>
                       </span>
                         <span class="nav-link-title">
@@ -314,7 +309,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('countries.index')}}">
+                    <a class="nav-link {{ (request()->segment(1) == 'countries') ? 'active' : '' }}" href="{{route('countries.index')}}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -329,7 +324,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->segment(1) == 'cities') ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('cities.index')}}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -344,8 +339,8 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('cities.index')}}">
+                <li class="nav-item {{ (request()->segment(1) == 'admins') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('admins.index')}}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-apple-podcast" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

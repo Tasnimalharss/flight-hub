@@ -67,7 +67,8 @@
                         @empty
                             <tr>
                                 <td class="text-danger text-center h5" colspan="6">
-                                    {{ __('messages.no-countries') }}</td>
+                                    No Countries data available
+                                </td>
                             </tr>
                         @endforelse
                     </tbody>

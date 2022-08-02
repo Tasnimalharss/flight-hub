@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Flights;
 
 use Livewire\Component;
-use App\Models\{Flight,Airport};
+use App\Models\{Flight,Airport,Airline};
 use Carbon\Carbon;
 
 
@@ -11,6 +11,7 @@ class CreateFlight extends Component
 {
     public $name;
     public $seats_count;
+    public $airline_id;
     public $arrival_time;
     public $depature_time;
     public $from_airport_id;
@@ -19,6 +20,7 @@ class CreateFlight extends Component
     protected $rules = [
         'name'=>'required|unique:flights',
         'seats_count'=>'required',
+        'airline_id' =>'required',
         'depature_time'=>'required',
         'arrival_time'=>'required|after:depature_time',
         'from_airport_id' => 'required',
@@ -28,7 +30,8 @@ class CreateFlight extends Component
     public function render()
     {
         return view('livewire.flights.create-flight',[
-            'airports'=> Airport::all()
+            'airports'=> Airport::all(),
+            'airlines'=> Airline::all()
         ]);
     }
 
@@ -36,7 +39,7 @@ class CreateFlight extends Component
 
         $this->validate();
         $duration=Carbon::parse($this->depature_time)->diffForHumans($this->arrival_time);
-        $ticket= Flight::create(['name'=>$this->name,'seats_count'=>$this->seats_count,'arrival_time'=>$this->arrival_time,'depature_time'=>$this->depature_time,'duration'=>$duration,'from_airport_id'=>$this->from_airport_id,'to_airport_id'=>$this->to_airport_id]);
+        $ticket= Flight::create(['name'=>$this->name,'seats_count'=>$this->seats_count,'airline_id'=>$this->airline_id,'arrival_time'=>$this->arrival_time,'depature_time'=>$this->depature_time,'duration'=>$duration,'from_airport_id'=>$this->from_airport_id,'to_airport_id'=>$this->to_airport_id]);
 
 
         return redirect()->route('flights.index')->with('success', 'Flight Data added successfully');

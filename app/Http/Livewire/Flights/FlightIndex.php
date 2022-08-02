@@ -33,7 +33,7 @@ class FlightIndex extends Component
         return view('livewire.flights.flight-index',[
             'flights'=>Flight::where('name','like', "%{$search}%")->orWhereHas('toAirport',function($query) use($search){
                 $query->where('name','like', "%{$search}%");
-            })->with('fromAirport','toAirport')->paginate(10)
+            })->with('airline','fromAirport','toAirport')->paginate(10)
         ]);
     }
 

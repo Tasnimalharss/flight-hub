@@ -1,6 +1,39 @@
 // Fonts
+
 @import '@tabler/core';
 @import url('https://fonts.googleapis.com/css?family=Cairo');
 body {
     font-family: 'Cairo' !important;
 }
+
+.bg-primary {
+    background-color: #336E81 !important;
+}
+.btn-primary {
+    background-color: #336E81 !important;
+}
+.btn-success{
+    background-color: #218531;
+}
+[type="file"] {
+    /* Style the color of the message that says 'No file chosen' */
+      color: #878787;
+    }
+    [type="file"]::-webkit-file-upload-button {
+      background: #336E81;
+      border: 2px solid #336E81;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+      outline: none;
+      padding: 5px 15px;
+      text-transform: uppercase;
+      transition: all 1s ease;
+    }
+    
+    [type="file"]::-webkit-file-upload-button:hover {
+      background: #fff;
+      border: 2px solid #535353;
+      color: #000;
+    }

@@ -32,6 +32,19 @@
                     </div>
                 </div>
                 <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label class="mb-1" >Airline</label>
+                        <input id="seats_count" type="text" placeholder="Airline"
+                            class="form-control @error('flight.airline_id') is-invalid @enderror" name="airline_id"
+                            wire:model="flight.airline_id" required autofocus>
+                        @error('flight.airline_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row mt-3">
                     <div class="col-md-6">
                         {{$a}}
                         <label class="mb-1" for="depature_time">Depature Date</label>

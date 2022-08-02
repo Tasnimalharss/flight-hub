@@ -25,7 +25,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Airline logo</th>
                             <th>Airline name</th>
+                            <th>Airline code</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -33,7 +35,9 @@
                         @forelse($airlines as $airline)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
+                                <td><img height="100" class="rounded-circle" src="{{$airline->image}}" alt="logo" /></td>
                                 <td>{{ $airline->name }}</td>
+                                <td>{{ $airline->code }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('airlines.edit', $airline->id) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg"

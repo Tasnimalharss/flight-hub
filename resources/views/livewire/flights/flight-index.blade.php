@@ -30,6 +30,7 @@
                                 <th>#</th>
                                 <th>Flight Name</th>
                                 <th>Seats Count</th>
+                                <th>Airline</th>
                                 <th>Depature Time</th>
                                 <th>Arrival Time</th>
                                 <th>From Airport</th>
@@ -43,6 +44,7 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $flight->name }}</td>
                                     <td> {{ $flight->seats_count }}</td>
+                                    <td> {{ $flight->airline->name }}</td>
                                     <td> {{ $flight->depature_time }}</td>
                                     <td>{{ $flight->arrival_time }}</td>
                                     <td> {{ optional($flight->toAirport)->name }}</td>
@@ -79,7 +81,8 @@
                             @empty
                                 <tr>
                                     <td class="text-danger text-center h5" colspan="6">
-                                        {{ __('messages.no-flights') }}</td>
+                                    No flights data available   
+                                    </td>
                                 </tr>
                             @endforelse
                         </tbody>

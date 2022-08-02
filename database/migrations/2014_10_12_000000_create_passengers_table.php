@@ -15,6 +15,12 @@ class CreatePassengersTable extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('passport_num');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

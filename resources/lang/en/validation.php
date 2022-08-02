@@ -160,23 +160,23 @@ return [
 
     'attributes' => [
         'city_id' =>'city',
+        'airline_id' =>'airline',
         'country_id' =>'country',
         'user_id'=> 'user',
         'flight_id'=>'flight'
 
     ],
     'custom'               => [
-        'batch.number' => [
-            'required' => 'حقل رقم الشحنة مطلوب',
-        ],
-        'batch_number' => [
-            'required' => 'حقل رقم الشحنة مطلوب',
-        ],
         'class_types.*.name' => [
             'required' => 'The class name is required',
         ],
         'class_types.*.price' => [
             'required' => 'The class price is required',
+        ],
+        'class_types.*.baggage_allowance' => [
+            'required' => 'Baggage allowance is required',
+        ],'class_types.*.type' => [
+            'required' => 'Type is required',
         ],
     ]
 ];

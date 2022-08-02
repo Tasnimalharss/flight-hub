@@ -19,6 +19,8 @@ class CreateTicketsTable extends Migration
             $table->string('seat_no');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('flight_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('class_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

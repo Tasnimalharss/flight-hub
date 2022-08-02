@@ -36,6 +36,7 @@ class EditFlight extends Component
         $duration=Carbon::parse($this->flight->depature_time)->diffAsHours($this->flight->arrival_time);
         $flight= Flight::find($this->flight->id);
         $flight->name=$this->flight->name;
+        $flight->airline_id=$this->flight->airline_id;
         $flight->seats_count=$this->flight->seats_count;
         $flight->arrival_time=$this->flight->arrival_time;
         $flight->depature_time=$this->flight->depature_time;

@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>City Code</th>
                             <th>City Name</th>
                             <th>Country Name</th>
                             <th>Actions</th>
@@ -34,6 +35,7 @@
                         @forelse ($cities as $city)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ $city->code }}</td>
                                 <td>{{ $city->name }}</td>
                                 <td> {{ $city->country->name }}</td>
                                 <td>

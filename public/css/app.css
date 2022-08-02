@@ -17908,3 +17908,11 @@ Antialiasing
 body {
   font-family: "Cairo" !important;
 }
+
+.bg-primary {
+  background-color: #336E81 !important;
+}
+
+.btn-primary {
+  background-color: #336E81 !important;
+}

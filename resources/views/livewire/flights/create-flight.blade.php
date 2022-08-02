@@ -32,6 +32,22 @@
                     </div>
                 </div>
                 <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label class="mb-1" >Airline</label>
+                        <select type="text" wire:model="airline_id" class="form-control @error('airline_id') is-invalid @enderror"">
+                            <option value="">Choose an Airline</option>
+                            @foreach ($airlines as $airline)
+                                <option value="{{ $airline->id }}">{{ $airline->name .' '. $airline->code }}</option>
+                            @endforeach
+                        </select>
+                        @error('airline_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+                </div>
+                <div class="row mt-3">
                     <div class="col-md-6">
                         <label class="mb-1" for="depature_time">Depature Date</label>
                         <input id="depature_time" type="datetime-local" placeholder="Depature Date"

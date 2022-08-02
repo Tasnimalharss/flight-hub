@@ -10,18 +10,18 @@
         <form method="POST" action="{{route('airports.update',$airport->id)}}">
             @csrf
             @method('PUT')
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="text" class="form-control" value="{{$airport->code}}" name="code" placeholder="Airport code">
-                    @error('code')
-                    <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
             <div class="row mt-3">
                 <div class="col-md-12">
                     <input type="text" class="form-control" value="{{$airport->name}}" name="name" placeholder="Airport name">
                     @error('name')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" value="{{$airport->code}}" name="code" placeholder="Airport code">
+                    @error('code')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>

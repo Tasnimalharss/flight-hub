@@ -51,6 +51,22 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12">
+                        <label class="mb-1">Class type</label>
+                        <select type="text" wire:model="ticket.class_type_id" class="form-control @error('ticket.class_type_id') is-invalid @enderror">
+                            <option value="">Choose Class Type</option>
+                            @foreach ($class_types as $class_type)
+                                <option value="{{ $class_type->id }}">{{ $class_type->name .' '. $class_type->ticket_type }}</option>
+                            @endforeach
+                        </select>
+                        @error('ticket.class_type_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
                         <label for="flight" class="mb-1">Passenger</label>
                         <select type="text" wire:model="ticket.user_id"
                             class="form-control @error('user_id') is-invalid @enderror"">

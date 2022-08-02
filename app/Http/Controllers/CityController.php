@@ -41,11 +41,13 @@ class CityController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'code' => 'required|unique:cities',
             'country_id' => 'required',
         ]);
 
         $city = new City;
         $city->name = $request->name;
+        $city->code = $request->code;
         $city->country_id = $request->country_id;
         $city->save();
 
@@ -89,11 +91,13 @@ class CityController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'code' => 'required|unique:cities,code,'.$id,
             'country_id' => 'required',
         ]);
 
         $city = City::find($id);
         $city->name = $request->name;
+        $city->code = $request->code;
         $city->country_id = $request->country_id;
         $city->save();
 

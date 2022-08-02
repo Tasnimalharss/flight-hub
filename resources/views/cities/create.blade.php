@@ -9,7 +9,15 @@
        <div class="card-body">
         <form method="POST" action="{{route('cities.store')}}">
             @csrf
-            <div class="row">
+             <div class="row">
+                <div class="col-md-12">
+                    <input type="text" value="{{old('code')}}" class="form-control" name="code" placeholder="City code">
+                    @error('code')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mt-3">
                 <div class="col-md-12">
                     <input type="text" value="{{old('name')}}" class="form-control" name="name" placeholder="City name">
                     @error('name')

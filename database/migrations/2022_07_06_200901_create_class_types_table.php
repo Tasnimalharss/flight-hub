@@ -17,7 +17,10 @@ class CreateClassTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
-            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
+            $table->float('baggage_allowance');
+            $table->enum('ticket_type', ['one_way' => 'One-way','two_way'=>'Two-way']);
+            $table->foreignId('airline_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

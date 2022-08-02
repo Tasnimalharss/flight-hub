@@ -9,18 +9,18 @@
        <div class="card-body">
         <form method="POST" action="{{route('airports.store')}}">
             @csrf
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-md-12">
-                    <input type="text" class="form-control" value="{{old('code')}}" name="code" placeholder="Airport code">
-                    @error('code')
+                    <input type="text" class="form-control" value="{{old('name')}}" name="name" placeholder="Airport name">
+                    @error('name')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <input type="text" class="form-control" value="{{old('name')}}" name="name" placeholder="Airport name">
-                    @error('name')
+                    <input type="text" class="form-control" value="{{old('code')}}" name="code" placeholder="Airport code">
+                    @error('code')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>

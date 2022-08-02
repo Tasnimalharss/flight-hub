@@ -75,7 +75,8 @@
                             @empty
                                 <tr>
                                     <td class="text-danger text-center h5" colspan="6">
-                                        {{ __('messages.no-tickets') }}</td>
+                                    No tickets data available
+                                    </td>
                                 </tr>
                             @endforelse
                         </tbody>

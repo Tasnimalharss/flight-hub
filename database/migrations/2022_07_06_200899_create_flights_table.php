@@ -20,11 +20,12 @@ class CreateFlightsTable extends Migration
             $table->datetime('arrival_time');
             $table->datetime('depature_time');
             $table->string('duration');
+            $table->foreignId('airline_id')->constrained()->onDelete('cascade');
             $table->bigInteger('from_airport_id')->unsigned();
             $table->bigInteger('to_airport_id')->unsigned();;
-
             $table->foreign('from_airport_id')->references('id')->on('airports')->onDelete('cascade');
             $table->foreign('to_airport_id')->references('id')->on('airports')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

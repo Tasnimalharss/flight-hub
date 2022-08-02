@@ -18,6 +18,7 @@ class CreateAirportsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
