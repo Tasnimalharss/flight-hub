@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Passengers;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Passenger;
 use Livewire\WithPagination;
 
 
@@ -26,7 +26,8 @@ class PassengerIndex extends Component
                 $query->where('first_name', 'LIKE', '%' . $search . '%')
                     ->orWhere('last_name', 'LIKE', '%' . $search . '%')
                     ->orWhere('email', 'LIKE', '%' . $search . '%')
-                    ->orWhere('phone', 'LIKE', '%' . $search . '%');
+                    ->orWhere('phone', 'LIKE', '%' . $search . '%')
+                    ->orWhere('passport_num', 'LIKE', '%' . $search . '%');
             })->paginate(10)
         ]);
     }

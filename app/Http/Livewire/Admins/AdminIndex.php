@@ -20,8 +20,7 @@ class AdminIndex extends Component
 {
         $search=$this->search;
         return view('livewire.admins.admin-index',[
-            'admins' => User::where('is_admin', 1)
-            ->where(function ($query) use ($search) {
+            'admins' => User::where(function ($query) use ($search) {
                 $query->where('first_name', 'LIKE', '%' . $search . '%')
                     ->orWhere('last_name', 'LIKE', '%' . $search . '%')
                     ->orWhere('email', 'LIKE', '%' . $search . '%')

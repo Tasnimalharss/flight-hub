@@ -33,7 +33,7 @@ class TicketIndex extends Component
         return view('livewire.tickets.ticket-index',[
             'tickets' => Ticket::where('ticket_no','like', "%{$search}%")->orWhere('seat_no','like', "%{$search}%")->orWhereHas('flight',function($query) use($search){
                 $query->where('name','like', "%{$search}%");
-            })->with('flight','user')->paginate(10)
+            })->with('flight','passenger')->paginate(10)
         ]);
     }
 

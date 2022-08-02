@@ -22,6 +22,9 @@ class Flight extends Model
         return $this->belongsTo(Airline::class);
     } 
 
+    public function class_types(){
+        return $this->hasMany(ClassType::class);
+    }
 
     public function toAirport(){
         

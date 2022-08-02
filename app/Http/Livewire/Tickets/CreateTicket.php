@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Tickets;
 
 use Livewire\Component;
-use App\Models\{Ticket,Flight,User,ClassType};
+use App\Models\{Ticket,Flight,Passenger,ClassType};
 
 class CreateTicket extends Component
 {
@@ -24,18 +24,18 @@ class CreateTicket extends Component
         
         return view('livewire.tickets.create-ticket',[
             'flights'=>Flight::all(),
-             'users' => User::all()
+             'users' => Passenger::all()
         ]);
     }
 
     public function setClassType(){
-        $this->class_types=Flight::find($this->flight_id)->airline->class_types;
+        $this->class_types=Flight::find($this->flight_id)->class_types;
     }
 
     public function store() {
 
         $this->validate();
-        $ticket= Ticket::create(['ticket_no'=>$this->ticket_no,'seat_no'=>$this->seat_no,'user_id'=>$this->user_id,'flight_id'=>$this->flight_id]);
+        $ticket= Ticket::create(['ticket_no'=>$this->ticket_no,'seat_no'=>$this->seat_no,'passenger_id'=>$this->user_id,'flight_id'=>$this->flight_id]);
 
         return redirect()->route('tickets.create')->with('success', 'Ticket data has been added successfully');
 

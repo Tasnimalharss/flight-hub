@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Flight,Ticket,Airline};
+use App\Models\{Passenger,Flight,Ticket,Airline};
 class HomeController extends Controller
 {
     /**
@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $details=[
-            'passengers_count'=>User::where('is_admin','=',0)->count(),
+            'passengers_count'=>Passenger::count(),
             'tickets_count'=>Ticket::count(),
             'flights_count'=>Flight::count(),
             'airlines_count'=>Airline::count(),

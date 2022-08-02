@@ -42,7 +42,7 @@
                                     <td>{{ $ticket->ticket_no }}</td>
                                     <td> {{ $ticket->seat_no }}</td>
                                     <td> {{ optional($ticket->flight)->name }}</td>
-                                    <td> {{ optional($ticket->user)->first_name }}</td>
+                                    <td> {{ optional($ticket->passenger)->first_name .' '. optional($ticket->passenger)->last_name}}</td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('tickets.edit', $ticket->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@
                                 <tr>
                                     <td class="text-danger text-center h5" colspan="6">
                                     No tickets data available
-                                    </td>
+                                  </td>
                                 </tr>
                             @endforelse
                         </tbody>

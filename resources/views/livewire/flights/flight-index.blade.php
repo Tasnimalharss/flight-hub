@@ -33,9 +33,10 @@
                                 <th>Airline</th>
                                 <th>Depature Time</th>
                                 <th>Arrival Time</th>
+                                <th>Flight Duration</th>
                                 <th>From Airport</th>
                                 <th>To Airport</th>
-                                <th  colspan="2" class="w-1"></th>
+                                <th colspan="2" class="w-1"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,7 @@
                                     <td> {{ $flight->airline->name }}</td>
                                     <td> {{ $flight->depature_time }}</td>
                                     <td>{{ $flight->arrival_time }}</td>
+                                    <td>{{ $flight->duration }} Hours</td>
                                     <td> {{ optional($flight->toAirport)->name }}</td>
                                     <td> {{ optional($flight->fromAirport)->name }}</td>
                                     <td>

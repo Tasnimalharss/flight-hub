@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->string('ticket_no');
             $table->string('seat_no');
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('passenger_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('flight_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('class_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->softDeletes();

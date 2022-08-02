@@ -66,8 +66,6 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        $ticket=$ticket->load('class_types')->toArray();
-    
         return view('tickets.edit',compact('ticket'));
     }
 

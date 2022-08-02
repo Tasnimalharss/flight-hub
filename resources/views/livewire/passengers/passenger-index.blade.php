@@ -26,6 +26,7 @@
                                 <th>Passenger Name</th>
                                 <th>Email</th>
                                 <th>Phone number</th>
+                                <th>Passport number</th>
                                 <th  colspan="2" class="w-1"></th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                     <td>{{ $passenger->first_name .' ' . $passenger->last_name}}</td>
                                     <td> {{ $passenger->email }}</td>
                                     <td> {{ $passenger->phone }}</td>
+                                    <td> {{ $passenger->passport_num }}</td>
                                     <td>
                                         <button data-bs-toggle="modal" data-bs-target="#delete_passenger_modal"
                                             wire:click="$set('temp_id',{{ $passenger->id }})" class="btn btn-danger">

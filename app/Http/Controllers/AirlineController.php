@@ -71,8 +71,7 @@ class AirlineController extends Controller
     public function edit(Airline $airline)
     {
          return view('airlines.edit',
-          [ 'airline' =>$airline->load('class_types')->toArray()
-        ]);
+          [ 'airline' =>$airline->first()]);
 
     }
 

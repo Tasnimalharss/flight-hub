@@ -18,10 +18,12 @@ class EditTicket extends Component
         'ticket.seat_no' => 'required',
         'ticket.user_id' => 'required',
         'ticket.flight_id' => 'required',
+        'ticket.class_type_id' => 'required',
     ];
 
     public function render()
     {
+        $this->class_types=$this->ticket->load('flight')->flight->class_types;
         return view('livewire.tickets.edit-ticket', [
             'flights' => Flight::all(),
             'users' => User::all(),
@@ -32,12 +34,12 @@ class EditTicket extends Component
     public function update()
     {
 
-  
         $ticket = Ticket::find($this->ticket['id']);
         $ticket->ticket_no = $this->ticket['ticket_no'];
         $ticket->seat_no = $this->ticket['seat_no'];
         $ticket->user_id = $this->ticket['user_id'];
         $ticket->flight_id = $this->ticket['flight_id'];
+        $ticket->class_type_id = $this->ticket['class_type_id'];
         $ticket->save();
 
     
