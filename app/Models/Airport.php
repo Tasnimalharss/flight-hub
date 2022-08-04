@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Airport extends Model
 {
     use HasFactory,SoftDeletes;
+    protected $hidden = ['deleted_at','created_at', 'updated_at'];
+
 
     public function city(){
         

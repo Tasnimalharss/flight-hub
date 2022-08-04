@@ -31,6 +31,7 @@
                                 <th>Ticket No</th>
                                 <th>Seat No</th>
                                 <th>Flight Name</th>
+                                <th>Class type</th>
                                 <th>Passenger Name</th>
                                 <th colspan="2"></th>
                             </tr>
@@ -42,6 +43,7 @@
                                     <td>{{ $ticket->ticket_no }}</td>
                                     <td> {{ $ticket->seat_no }}</td>
                                     <td> {{ optional($ticket->flight)->name }}</td>
+                                    <td> {{ $ticket->class_type->name }}</td>
                                     <td> {{ optional($ticket->passenger)->first_name .' '. optional($ticket->passenger)->last_name}}</td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('tickets.edit', $ticket->id) }}">

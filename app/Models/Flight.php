@@ -10,7 +10,10 @@ class Flight extends Model
 {
     use HasFactory,SoftDeletes;
 
+    protected $with =['toAirport','fromAirport'];
     protected $guarded=[];
+    protected $hidden = ['deleted_at','created_at', 'updated_at'];
+
 
     public function tickets(){
         

@@ -55,7 +55,7 @@ class CreateFlight extends Component
     public function store() {
 
         $this->validate();
-        $duration=Carbon::parse($this->depature_time)->diffAsHours($this->arrival_time);
+        $duration=Carbon::parse($this->depature_time)->diffInHours($this->arrival_time);
         $flight= Flight::create(['name'=>$this->name,'seats_count'=>$this->seats_count,'airline_id'=>$this->airline_id,'arrival_time'=>$this->arrival_time,'depature_time'=>$this->depature_time,'duration'=>$duration,'from_airport_id'=>$this->from_airport_id,'to_airport_id'=>$this->to_airport_id]);
 
 

@@ -34,7 +34,7 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label for="flight" class="mb-1">Flight </label>
-                        <select type="text" wire:model="ticket.flight_id"
+                        <select type="text" wire:change="setClassType()" wire:model="ticket.flight_id"
                             class="form-control @error('ticket.flight_id') is-invalid @enderror">
                             <option value="">Choose Flight</option>
                             @foreach ($flights as $flight)
@@ -58,6 +58,7 @@
                                 <option value="{{ $class_type->id }}">{{ $class_type->name .' '. $class_type->ticket_type }}</option>
                             @endforeach
                         </select>
+                        
                         @error('ticket.class_type_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -68,12 +69,12 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label for="flight" class="mb-1">Passenger</label>
-                        <select type="text" wire:model="ticket.user_id"
+                        <select type="text" wire:model="ticket.passenger_id"
                             class="form-control @error('user_id') is-invalid @enderror"">
                             <option value="">Choose Passenger</option>
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">
-                                    {{ $user->first_name . ' ' . $user->last_name }}</option>
+                            @foreach ($passengers as $passenger)
+                                <option value="{{ $passenger->id }}">
+                                    {{ $passenger->first_name . ' ' . $passenger->last_name }}</option>
                             @endforeach
                         </select>
                         @error('ticket.user_id')

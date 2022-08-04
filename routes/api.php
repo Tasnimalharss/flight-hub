@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\{TicketController,PassengerController};
+use App\Http\Controllers\API\{AirlineController,TicketController,PassengerController};
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/tickets', [TicketController::class, 'index']);
-Route::post('/add-passeneger', [PassengerController::class, 'store']);
+Route::resource('airlines', AirlineController::class);

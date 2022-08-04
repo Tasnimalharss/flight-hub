@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Airline extends Model implements  HasMedia
 {
     use HasFactory,SoftDeletes ,HasMediaTrait;
-    protected $with =['media'];
     protected $appends = ["image"];
 
     public function getImageAttribute(){
