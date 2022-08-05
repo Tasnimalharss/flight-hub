@@ -47,7 +47,7 @@ class AirlineController extends Controller
      */
     public function show(Airline $airline)
     {
-        return response()->json(['data' => $airline->makeHidden(['media'])->load(['flights'])]);
+        return response()->json(['data' => $airline->makeHidden(['media'])->load(['flights.airline'])]);
     }
 
     /**
