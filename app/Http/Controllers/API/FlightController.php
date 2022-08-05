@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Flight;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
@@ -13,8 +14,10 @@ class FlightController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $flights = Flight::where('depature_time', '>=', now())->with('airline')->get();
+        
+        return response()->json(['data' => $flights], 200);
     }
 
     /**

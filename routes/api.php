@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\{AirlineController,TicketController,PassengerController};
+use App\Http\Controllers\API\{AirlineController,TicketController,PassengerController, FlightController};
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('airlines', AirlineController::class);
+Route::get('flights', [FlightController::class, 'index']);
