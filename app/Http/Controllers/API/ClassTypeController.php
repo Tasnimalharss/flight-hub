@@ -11,7 +11,10 @@ class ClassTypeController extends Controller
     public function index()
     {
         $classTypes = Flight::where('depature_time', '>=', now())
-            ->get()->pluck('class_types')->flatten()->unique('name');
+            ->get()->pluck('class_types')
+            ->flatten()
+            ->unique('name')
+            ->flatten();
             
         return response()->json(['data' => $classTypes], 200);
     }
