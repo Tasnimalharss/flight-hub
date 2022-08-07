@@ -23,6 +23,8 @@ class FlightController extends Controller
             ->map(function($flight) use($request){
                 if($request->class_type){
                     $flight['price'] = $flight->class_types->where('name', $request->class_type)->first()->price;                    
+                }else{
+                    $flight['price'] = null;
                 }
                 return $flight;
             });
