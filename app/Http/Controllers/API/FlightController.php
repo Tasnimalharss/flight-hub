@@ -14,11 +14,18 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(FlightFilter $flightFilter)
+    public function index(FlightFilter $flightFilter, Request $request)
     {
         $flights = Flight::where('depature_time', '>=', now())
             ->filter($flightFilter)
-            ->with('airline')->get();
+            ->with('airline')
+            ->get()
+            ->map(function($flight) use($request){
+                if($request->class_type){
+                    $flight['price'] = $flight->class_types->where('name', $request->class_type)->first()->price;                    
+                }
+                return $flight;
+            });
 
         return response()->json(['data' => $flights], 200);
     }
