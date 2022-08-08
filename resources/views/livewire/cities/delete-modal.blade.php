@@ -14,8 +14,8 @@
             </div>
         </form>
             <div class="modal-footer mt-3">
-                <button wire:click="delete()" type="button" class="btn btn-success px-3 rounded-pill">Delete</button>
-                <button id="close-delete-modal" type="button" class="btn btn-danger px-3 rounded-pill" data-bs-dismiss="modal">Close</button>
+                <button wire:click="delete()" type="button" class="btn btn-outline-danger px-3 rounded-pill">Delete</button>
+                <button id="close-delete-modal" type="button" class="btn btn-secondary px-3 rounded-pill" data-bs-dismiss="modal">Close</button>
 
             </div>
         </div>

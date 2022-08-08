@@ -5,9 +5,8 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
             <a href=".">
-                {{-- <img src="./static/logo-white.svg" width="110" height="32" alt="Tabler"
-                    class="navbar-brand-image"> --}}
-                    Flight Hub
+                <img src="{{asset('images/logo.png')}}" width="110" height="32" alt="Tabler"
+                    class="navbar-brand-image">
             </a>
         </h1>
         {{-- <div class="navbar-nav flex-row d-lg-none">

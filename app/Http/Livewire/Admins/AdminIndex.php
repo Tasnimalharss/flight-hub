@@ -28,4 +28,12 @@ class AdminIndex extends Component
             })->paginate(10)
         ]);
     }
+
+    public function delete()
+    {
+        User::destroy($this->temp_id);
+        /*Emit event to close modal */
+        $this->emit('adminDeleted');
+        session()->flash('success', 'Admin deleted successfully');
+    }
 }
