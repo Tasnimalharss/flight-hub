@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Filters\FlightFilter;
 use App\Http\Controllers\Controller;
+use App\Models\Flight;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
@@ -12,9 +14,22 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(FlightFilter $flightFilter, Request $request)
     {
-        //
+        $flights = Flight::where('depature_time', '>=', now())
+            ->filter($flightFilter)
+            ->with('airline')
+            ->get()
+            ->map(function($flight) use($request){
+                if($request->class_type){
+                    $flight['price'] = $flight->class_types->where('name', $request->class_type)->first()->price;                    
+                }else{
+                    $flight['price'] = null;
+                }
+                return $flight;
+            });
+
+        return response()->json(['data' => $flights], 200);
     }
 
     /**
