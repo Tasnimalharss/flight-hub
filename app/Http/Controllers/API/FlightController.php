@@ -22,7 +22,7 @@ class FlightController extends Controller
             ->get()
             ->map(function ($flight) use ($request) {
                 if ($request->class_type) {
-                    $flight['class_type'] = $flight->class_types->where('name', $request->clas_type)->first();
+                    $flight['class_type'] = $flight->class_types->where('name', $request->class_type)->first();
                     $flight['price'] = $flight->class_types->where('name', $request->class_type)->first()->price;
                 } else {
                     $flight['price'] = null;
