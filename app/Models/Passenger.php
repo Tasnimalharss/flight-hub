@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Passenger extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
+    protected $guarded = ['id'];
 
-    public function tickets(){
-        
+    public function tickets()
+    {
+
         return $this->hasMany(Ticket::class);
     }
 }

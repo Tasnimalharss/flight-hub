@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Models\Ticket;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TicketController extends Controller
 {
@@ -34,8 +36,20 @@ class TicketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $passengerId = explode('-', $request->custom_ref)[0];
+        $flightId = explode('-', $request->custom_ref)[1];
+        $classTypeId = explode('-', $request->custom_ref)[2];
+        
+        $ticket = Ticket::create([
+            'passenger_id'  => $passengerId,
+            'flight_id'     => $flightId,
+            'class_type_id' => $classTypeId,
+            'ticket_no'     => Str::random(5),
+            'seat_no'       => Str::random(5)
+        ]);
+        
+        return response()->json($ticket, 200);
     }
 
     /**

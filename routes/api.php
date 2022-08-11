@@ -25,4 +25,5 @@ Route::get('flights', [FlightController::class, 'index']);
 Route::get('flights/{flight}/class-types', [FlightClassTypeController::class, 'index']);
 Route::get('airports', [AirportController::class, 'index']);
 Route::get('class-types', [ClassTypeController::class, 'index']);
-Route::post('payment', function(){});
+Route::post('passengers', [PassengerController::class, 'store']);
+Route::post('tickets', [TicketController::class, 'store']);
