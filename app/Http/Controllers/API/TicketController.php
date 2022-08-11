@@ -36,19 +36,47 @@ class TicketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
+        // departure and return example 1-1.2-2.3
+        // departure example 1-1.2
         $passengerId = explode('-', $request->custom_ref)[0];
-        $flightId = explode('-', $request->custom_ref)[1];
-        $classTypeId = explode('-', $request->custom_ref)[2];
-        
+
+        if (count(explode('-', $request->custom_ref)) == 3) {
+            $departureFlightDetails = explode('-', $request->custom_ref)[1];
+            
+            $departureFlightId = explode('.', $departureFlightDetails)[0];
+            $departureClassTypeId = explode('.', $departureFlightDetails)[1];
+
+            $returnFlightDetails = explode('-', $request->custom_ref)[2];
+
+            $returnFlightId = explode('.', $returnFlightDetails)[0];
+            $returnClassTypeId = explode('.', $returnFlightDetails)[1];            
+        } 
+        elseif (count(explode('-', $request->custom_ref)) == 2) {
+            $departureFlightDetails = explode('-', $request->custom_ref)[1];
+            
+            $departureFlightId = explode('.', $departureFlightDetails)[0];
+            $departureClassTypeId = explode('.', $departureFlightDetails)[1];
+        }
+
         $ticket = Ticket::create([
             'passenger_id'  => $passengerId,
-            'flight_id'     => $flightId,
-            'class_type_id' => $classTypeId,
+            'flight_id'     => $departureFlightId,
+            'class_type_id' => $departureClassTypeId,
             'ticket_no'     => Str::random(5),
             'seat_no'       => Str::random(5)
         ]);
-        
+
+        if (count(explode('-', $request->custom_ref)) == 3) {
+            $ticket = Ticket::create([
+                'passenger_id'  => $passengerId,
+                'flight_id'     => $returnFlightId,
+                'class_type_id' => $returnClassTypeId,
+                'ticket_no'     => Str::random(5),
+                'seat_no'       => Str::random(5)
+            ]);
+        }
+
         return response()->json($ticket, 200);
     }
 
