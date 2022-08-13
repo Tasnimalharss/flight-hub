@@ -3,8 +3,12 @@
 namespace App\Http\Livewire\Flights;
 
 use Livewire\Component;
-use App\Models\{Flight,Airport};
+use App\Models\{Flight,Airport,Ticket};
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FlightCancelledMail;
+
+
 
 class FlightIndex extends Component
 {
@@ -39,10 +43,23 @@ class FlightIndex extends Component
 
     public function delete()
     {
+        $tickets=Ticket::where('flight_id',$this->temp_id)->with(['passenger','flight'])->get();
+
+        $this->send_email($tickets->pluck('flight.name')[0],$tickets->pluck('passenger.email'));
+
         Flight::destroy($this->temp_id);
         /*Emit event to close modal */
         $this->emit('flightDeleted');
 
         session()->flash('success', 'Flight deleted successfully');
+    }
+
+    public function send_email($flight_number,$passengers_email){
+        $data =[
+            'flight_number' => $flight_number
+        ];
+
+        Mail::bcc($passengers_email)->send(new FlightCancelledMail($data));
+
     }
 }

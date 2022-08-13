@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Flights;
 use Livewire\Component;
 use App\Models\{Flight,Airport,Airline,ClassType};
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FlightUpdatedMail;
 
 class EditFlight extends Component
 {
@@ -45,8 +47,14 @@ class EditFlight extends Component
     public function update() {
 
         $this->validate();
-        $duration=Carbon::parse($this->flight['depature_time'])->diffInHours($this->flight['arrival_time']);
         $flight= Flight::find($this->flight['id']);
+        $passengers_email=$flight->tickets()->with('passenger')->get()->pluck('passenger.email');
+        
+        if($flight->arrival_time!=$this->flight['arrival_time'] && $flight->depature_time!=$this->flight['depature_time'])
+        {
+            $this->send_email($flight,$passengers_email);
+        }
+        $duration=Carbon::parse($this->flight['depature_time'])->diffInHours($this->flight['arrival_time']);
         $flight->name=$this->flight['name'];
         $flight->airline_id=$this->flight['airline_id'];
         $flight->seats_count=$this->flight['seats_count'];
@@ -83,6 +91,17 @@ class EditFlight extends Component
 
 
         return redirect()->route('flights.index')->with('success', 'Flight Data added successfully');
+
+    }
+
+    public function send_email($flight,$passengers_email){
+        $data =[
+            'flight_number' => $flight->name,
+            'arrival_time' => $flight->arrival_time,
+            'depature_time' => $flight->depature_time,
+        ];
+
+        Mail::bcc($passengers_email)->send(new FlightUpdatedMail($data));
 
     }
 }
