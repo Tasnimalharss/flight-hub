@@ -20,6 +20,9 @@ class FlightController extends Controller
             ->filter($flightFilter)
             ->with('airline')
             ->get()
+            ->filter(function($flight){
+                return $flight->seats_count > $flight->tickets->count();
+            })
             ->map(function ($flight) use ($request) {
                 if ($request->class_type) {
                     $flight['class_type'] = $flight->class_types->where('name', $request->class_type)->first();
