@@ -12,7 +12,6 @@ class PassengerController extends Controller
     {
         $data = $request->validate([
             'email'        => 'required|email',
-        ],[
             'first_name'   => 'required|string',
             'last_name'    => 'required|string',
             'phone'        => 'required|numeric',
