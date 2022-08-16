@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Tickets;
 
 
 use Livewire\Component;
-use App\Models\{Ticket,Flight,User,ClassType};
+use App\Models\{Ticket,Flight,User,Passenger,ClassType};
 
 
 class EditTicket extends Component
@@ -26,7 +26,7 @@ class EditTicket extends Component
         $this->class_types=$this->ticket->load('flight')->flight->class_types;
         return view('livewire.tickets.edit-ticket', [
             'flights' => Flight::all(),
-            'passengers' => User::all(),
+            'passengers' => Passenger::all(),
         ]);
     }
 
