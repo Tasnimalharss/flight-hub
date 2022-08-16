@@ -49,8 +49,8 @@
                                     <td> {{ $flight->depature_time }}</td>
                                     <td>{{ $flight->arrival_time }}</td>
                                     <td>{{ $flight->duration }} Hours</td>
-                                    <td> {{ optional($flight->toAirport)->name }}</td>
                                     <td> {{ optional($flight->fromAirport)->name }}</td>
+                                    <td> {{ optional($flight->toAirport)->name }}</td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('flights.edit', $flight->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg"

@@ -43,7 +43,7 @@ class CountryController extends Controller
         $country->name=$request->name;
         $country->save();
         
-        return redirect()->route('countries.index')->with(['success' => 'Country data has been added successfully!']);;
+        return redirect()->route('countries.index')->with(['success' => 'Country data has been added successfully!']);
     }
 
     /**
