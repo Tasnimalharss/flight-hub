@@ -30,7 +30,7 @@ class CreateFlight extends Component
         'to_airport_id' => 'required',
         'class_types.*.name' => 'required',
         'class_types.*.price' => 'required',
-        'class_types.*.ticket_type' => 'required',
+        // 'class_types.*.ticket_type' => 'required',
         'class_types.*.baggage_allowance' => 'required',
     ];
 

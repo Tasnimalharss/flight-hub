@@ -36,7 +36,7 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $country->name }}</td>
                                 <td>
-                                    <button class="btn btn-primary" href="{{ route('countries.edit', $country->id) }}">
+                                    <a class="btn btn-primary" href="{{ route('countries.edit', $country->id) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-0 me-0" width="24"
                                             height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                             fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -47,7 +47,7 @@
                                             <path d="M9 7.07a7.002 7.002 0 0 0 1 13.93a7.002 7.002 0 0 0 6.929 -5.999">
                                             </path>
                                         </svg>
-                                    </button>
+                                    </a>
                                     <button class="btn btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#delete_country_modal"
                                         wire:click="$set('temp_id',{{ $country->id }})">
@@ -79,7 +79,6 @@
             </div>
         </div>
         @include('livewire.countries.delete-modal')
-
     </div>
 </div>
 @push('scripts')

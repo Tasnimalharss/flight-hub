@@ -11,7 +11,7 @@
     </div>
     <div class="card mt-2">
         <div class="card-header">
-            <h3 class="card-title">Add New Country</h3>
+            <h3 class="card-title"> Update Country</h3>
           </div>
        <div class="card-body">
         <form method="POST" action="{{route('countries.update',$country->id)}}">

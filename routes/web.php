@@ -9,7 +9,9 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PassengerController;
-use App\Http\Controllers\TicketController;use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TicketController;
+use Illuminate\Support\Facades\Route;
+use App\Models\Ticket;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,11 @@ use App\Http\Controllers\TicketController;use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/test', function () {
+        $ticket=Ticket::find(2);
+        $ticket->load(['passenger','flight.airline']);
+        return view('mails.ticket',compact('ticket'));
+    });
     Route::get('/', function () {
         return redirect('/home');
     });

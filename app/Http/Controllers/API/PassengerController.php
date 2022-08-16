@@ -12,14 +12,20 @@ class PassengerController extends Controller
     {
         $data = $request->validate([
             'email'        => 'required|email',
-        ],[
             'first_name'   => 'required|string',
             'last_name'    => 'required|string',
             'phone'        => 'required|numeric',
             'passport_num' => 'required|string',
         ]);
         
-        $passenger = Passenger::firstOrCreate($data);
+        $passenger = Passenger::updateOrCreate([
+            'email' => $data['email']
+        ], [
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'phone' => $data['phone'],
+            'passport_num' => $data['passport_num'],
+        ]);
         
         return response()->json($passenger, 200);
     }

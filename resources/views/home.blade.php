@@ -138,7 +138,7 @@
         </div>
         <div class="row mt-1">
             <div class="col-12">
-                <h2 class="mt-2 mb-1">Airlines List</h2>
+                <h2 class="mt-2 mb-1">Airlines Companies</h2>
                 <div class="card mt-2 ">
                     <div class="table-responsive">
                         <table class="table table-vcenter card-table">

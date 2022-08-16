@@ -77,9 +77,18 @@ class TicketController extends Controller
             ]);
         }
 
+        $this->send_email($ticket->load(['passenger','flight.airline']));
         return response()->json($ticket, 200);
     }
 
+    public function send_email($flight_number,$ticket){
+        $data =[
+            'flight_number' => $flight_number
+        ];
+
+        Mail::bcc($passengers_email)->send(new FlightCancelledMail($data));
+
+    }
     /**
      * Display the specified resource.
      *

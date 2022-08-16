@@ -45,4 +45,6 @@ class Flight extends Model
     {
         $filter->apply($builder);
     }
+
+    
 }
