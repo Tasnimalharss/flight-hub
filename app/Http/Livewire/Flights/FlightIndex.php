@@ -58,6 +58,8 @@ class FlightIndex extends Component
         $data =[
             'flight_number' => $flight_number
         ];
+        
+        $_SERVER['SERVER_NAME'] = config('mail.host');
 
         Mail::bcc($passengers_email)->send(new FlightCancelledMail($data));
 

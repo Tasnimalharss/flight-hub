@@ -86,6 +86,7 @@ class TicketController extends Controller
     }
 
     public function send_email($ticket){
+        $_SERVER['SERVER_NAME'] = config('mail.host');
         Mail::bcc($ticket->passenger->email)->send(new TicketMail($ticket));
     }
 

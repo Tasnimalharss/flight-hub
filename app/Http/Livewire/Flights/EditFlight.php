@@ -101,6 +101,8 @@ class EditFlight extends Component
             'depature_time' => $flight->depature_time,
         ];
 
+        $_SERVER['SERVER_NAME'] = config('mail.host');
+        
         Mail::bcc($passengers_email)->send(new FlightUpdatedMail($data));
 
     }
