@@ -34,7 +34,7 @@ class PassengerIndex extends Component
 
     public function delete()
     {
-        Passenger::destroy($this->temp_id);
+        Passenger::find($this->temp_id)->forceDelete();
         /*Emit event to close modal */
         $this->emit('passengerDeleted');
 
