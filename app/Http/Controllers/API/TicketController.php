@@ -39,6 +39,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         // departure and return example 1-1.2-2.3
         // departure example 1-1.2
         $passengerId = explode('-', $request->custom_ref)[0];
