@@ -16,10 +16,10 @@ class TicketMail extends Mailable
      *
      * @return void
      */
-    public $data;
+    public $ticket;
     public function __construct($data)
     {
-        $this->data = $data;
+        $this->ticket = $data;
     }
 
 
@@ -30,6 +30,6 @@ class TicketMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Flight hub ticket')->view('mails.ticket');
     }
 }

@@ -31,11 +31,6 @@ use App\Models\Ticket;
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/test', function () {
-        $ticket=Ticket::find(2);
-        $ticket->load(['passenger','flight.airline']);
-        return view('mails.ticket',compact('ticket'));
-    });
     Route::get('/', function () {
         return redirect('/home');
     });

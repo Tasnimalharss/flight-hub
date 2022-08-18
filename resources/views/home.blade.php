@@ -109,7 +109,7 @@
                 </div>
             </div>
         </div>
-        <h2 class="mt-2 mb-1">Flights count per Airline</h2>
+        <h2 class="mt-2 mb-1">Flights statistics </h2>
         <div style="  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);background-color:#fff ;border-radius: 5px;" class="verticalChart  mt-2 p-2">
 
             @foreach ($flights_by_airline as $airline)   
