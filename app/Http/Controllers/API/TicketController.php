@@ -85,9 +85,9 @@ class TicketController extends Controller
     }
 
     public function send_email($ticket){
-        Mail::bcc($ticket->passenger->email)->send(new TicketMail($data));
+        Mail::bcc($ticket->passenger->email)->send(new TicketMail($ticket));
     }
-    
+
     /**
      * Display the specified resource.
      *
