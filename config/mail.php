@@ -33,6 +33,8 @@ return [
     |
     */
 
+    'local_domain' => env('MAIL_HOST'),
+    
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
