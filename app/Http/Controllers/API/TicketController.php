@@ -40,12 +40,11 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        Log::alert($request);
         // departure and return example 1-1.2-2.3
         // departure example 1-1.2
         $passengerId = explode('-', $request->custom_ref)[0];
 
-        if (count(explode('-', $request->custom_ref)) == 3) {
+        if (count(explode('-', $request->custom_ref)) == 4) {
             $departureFlightDetails = explode('-', $request->custom_ref)[1];
             
             $departureFlightId = explode('.', $departureFlightDetails)[0];
@@ -56,7 +55,7 @@ class TicketController extends Controller
             $returnFlightId = explode('.', $returnFlightDetails)[0];
             $returnClassTypeId = explode('.', $returnFlightDetails)[1];            
         } 
-        elseif (count(explode('-', $request->custom_ref)) == 2) {
+        elseif (count(explode('-', $request->custom_ref)) == 3) {
             $departureFlightDetails = explode('-', $request->custom_ref)[1];
             
             $departureFlightId = explode('.', $departureFlightDetails)[0];
