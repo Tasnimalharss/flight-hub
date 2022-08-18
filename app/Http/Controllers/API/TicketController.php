@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Ticket;
+use App\Mail\TicketMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TicketMail;
 
 class TicketController extends Controller
 {
@@ -39,7 +40,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        Log::alert($request);
         // departure and return example 1-1.2-2.3
         // departure example 1-1.2
         $passengerId = explode('-', $request->custom_ref)[0];
